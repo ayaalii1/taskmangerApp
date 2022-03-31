@@ -1,0 +1,10 @@
+<h1>Welcome {{user.name}}</h1>
+
+<button class="btn btn-sm btn-primary" routerLink="/viewTask">View Tasks</button>
+
+<button class="btn btn-sm btn-primary m-5" routerLink="/addTask">Add Tasks</button>
+
+
+<!--algorithm base64 convert characters to images-->
+<!-- data:mediatype/png;base64,{{user.avatar}}-->
+<img src="data:image/png;base64,{{user.avatar}}" width="200px" alt="profileImage">

@@ -1,0 +1,45 @@
+<form #taskForm="ngForm" class="container mt-5" (ngSubmit)="updateTask(taskForm.value)">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        ngModel
+        [(ngModel)]="task.title"
+        placeholder="Enter title"
+        #title="ngModel"
+      />
+      <div class="errors d-flex justify-content-center" 
+      *ngIf="title.touched && title.invalid ">
+      <div *ngIf="title.errors?.['required']">*Title is requried*</div>
+  
+      </div>
+    </div>
+  
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          name="description"
+          ngModel
+          [(ngModel)]="task.description"
+          placeholder="Enter description"
+          #description="ngModel"
+        />
+        <div class="errors d-flex justify-content-center" 
+        *ngIf="description.touched && description.invalid ">
+        <div *ngIf="description.errors?.['required']">*Description is requried*</div>
+    
+        </div>
+      </div>
+  
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="completed" name="completed" ngModel [(ngModel)]="task.completed" />
+      <label class="form-check-label" for="completed">Completed</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Submit</button>
+  </form>

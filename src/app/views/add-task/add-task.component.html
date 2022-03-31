@@ -1,0 +1,41 @@
+<form [formGroup]="taskForm" class="container mt-5" (ngSubmit)="addTask(taskForm.value)">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      formControlName="title"
+      placeholder="Enter title"
+    />
+    <div class="errors d-flex justify-content-center" 
+    *ngIf="taskValues['title'].touched && taskValues['title'].invalid ">
+    <div *ngIf="taskValues['title'].errors?.['required']">*Title is requried*</div>
+
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="description"
+      formControlName="description"
+      placeholder="Enter description"
+    />
+    <div class="errors d-flex justify-content-center" 
+    *ngIf="taskValues['description'].touched && taskValues['description'].invalid ">
+    <div *ngIf="taskValues['description'].errors?.['required']">*Description is requried*</div>
+
+    </div>
+  </div>
+
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="completed" formControlName="completed" />
+    <label class="form-check-label" for="completed">Completed</label>
+  </div>
+
+  <input type="file" formControlName="img" accept="image/*" (change)="handelUpload($event)">
+  <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Submit</button>
+</form>
